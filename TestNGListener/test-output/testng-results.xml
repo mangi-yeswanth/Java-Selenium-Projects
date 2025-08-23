@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="2" failed="1" skipped="1">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-20T17:01:06 IST" name="Default suite" finished-at="2025-08-20T17:01:36 IST" duration-ms="30268">
+    <groups>
+    </groups>
+    <test started-at="2025-08-20T17:01:06 IST" name="Default test" finished-at="2025-08-20T17:01:36 IST" duration-ms="30268">
+      <class name="com.example.seleniumtestNGListeners.GoogleTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:06 IST" name="setUp" finished-at="2025-08-20T17:01:08 IST" duration-ms="2335" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="failingTest()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:08 IST" name="failingTest" finished-at="2025-08-20T17:01:09 IST" duration-ms="1045" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Intentional Failure ]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Intentional Failure 
+at org.testng.Assert.fail(Assert.java:111)
+at com.example.seleniumtestNGListeners.GoogleTest.failingTest(GoogleTest.java:39)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- failingTest -->
+        <test-method signature="launchGoogle()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:09 IST" name="launchGoogle" finished-at="2025-08-20T17:01:12 IST" duration-ms="3344" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchGoogle -->
+        <test-method signature="dependTest()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:12 IST" name="dependTest" finished-at="2025-08-20T17:01:12 IST" depends-on-methods="com.example.seleniumtestNGListeners.GoogleTest.failingTest" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method com.example.seleniumtestNGListeners.GoogleTest.dependTest() on instance com.example.seleniumtestNGListeners.GoogleTest@445b295b depends on not successfully finished methods 
+[com.example.seleniumtestNGListeners.GoogleTest.failingTest() on instance com.example.seleniumtestNGListeners.GoogleTest@445b295b]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method com.example.seleniumtestNGListeners.GoogleTest.dependTest() on instance com.example.seleniumtestNGListeners.GoogleTest@445b295b depends on not successfully finished methods 
+[com.example.seleniumtestNGListeners.GoogleTest.failingTest() on instance com.example.seleniumtestNGListeners.GoogleTest@445b295b]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dependTest -->
+        <test-method signature="searchYoutube()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:12 IST" name="searchYoutube" finished-at="2025-08-20T17:01:25 IST" depends-on-methods="com.example.seleniumtestNGListeners.GoogleTest.launchGoogle" duration-ms="13135" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchYoutube -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.seleniumtestNGListeners.GoogleTest@445b295b]" started-at="2025-08-20T17:01:25 IST" name="tearDown" finished-at="2025-08-20T17:01:36 IST" duration-ms="10311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.seleniumtestNGListeners.GoogleTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
