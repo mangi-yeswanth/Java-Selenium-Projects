@@ -1,0 +1,7 @@
+<suite name="MyTestSuite">
+   <test name="CalculatorTest">
+      <classes>
+           <class name="com.example.testng.CalculatorTest"/>
+      </classes>
+   </test>
+</suite>
