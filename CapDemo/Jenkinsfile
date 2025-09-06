@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_ENV = 'dev'
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                echo 'Cloning repository...'
+                git branch: 'main', url: 'https://github.com/saisai18018/Cap.git'
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                dir('CapDemo') {
+                    echo 'Building the project and running tests...'
+                    bat 'mvn clean install'
+                    echo 'Tests executed. ExtentReports generated in reports/extentreports.'
+                }
+            }
+        }
+
+        stage('Run App') {
+            steps {
+                dir('CapDemo') {
+                    echo 'Running the Java App...'
+                    bat 'java -cp target/CapDemo-0.0.1-SNAPSHOT.jar com.example.App'
+                }
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                echo 'Publishing ExtentReports in Jenkins...'
+                publishHTML([
+                    reportDir: 'CapDemo/reports/ExtentReports',  // ExtentReports folder
+                    reportFiles: 'index.html',                   // main report file
+                    reportName: 'Extent Report',                 // name shown in Jenkins
+                    keepAll: true,
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true                 // link always points to latest report
+                ])
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying to ${env.APP_ENV} environment..."
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed! Please check logs and ExtentReport.'
+        }
+    }
+}
