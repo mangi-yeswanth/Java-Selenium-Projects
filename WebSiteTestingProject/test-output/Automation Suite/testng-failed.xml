@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Automation Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Practice Form Tests(failed)">
+    <classes>
+      <class name="tests.PracticeFormTest">
+        <methods>
+          <include name="testMultipleFileUpload"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testFillFormAndUploadFile"/>
+        </methods>
+      </class> <!-- tests.PracticeFormTest -->
+    </classes>
+  </test> <!-- Practice Form Tests(failed) -->
+</suite> <!-- Failed suite [Automation Suite] -->
