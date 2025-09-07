@@ -17,9 +17,8 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                dir('Capstone-Project') { // go inside the folder containing pom.xml
-                    bat 'mvn clean test'
-                }
+                // Run from correct folder (only once)
+                bat 'cd Capstone-Project && mvn clean test'
             }
         }
 
@@ -28,10 +27,10 @@ pipeline {
                 // Publish JUnit results
                 junit 'Capstone-Project/target/surefire-reports/*.xml'
 
-                // Publish TestNG results (if you use TestNG)
+                // Publish TestNG results
                 publishTestNGResults testNGpattern: 'Capstone-Project/test-output/testng-results.xml'
 
-                // Publish Cucumber Reports (if applicable)
+                // Publish Cucumber Reports
                 cucumber buildStatus: 'UNSTABLE',
                          fileIncludePattern: 'Capstone-Project/target/cucumber-reports/*.json',
                          sortingMethod: 'ALPHABETICAL'
