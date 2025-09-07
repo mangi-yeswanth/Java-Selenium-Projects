@@ -17,10 +17,8 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                // Run Maven inside the project folder that contains pom.xml
-                dir('Capstone-Project') {
-                    bat 'mvn clean test'
-                }
+                // Run directly, pom.xml is in Capstone-Project/
+                bat 'cd Capstone-Project && mvn clean test'
             }
         }
 
