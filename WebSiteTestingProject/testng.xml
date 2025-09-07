@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<suite name="Automation Suite">
-  <test name="Practice Form Tests">
-    <classes>
-      <class name="tests.PracticeFormTest" />
-    </classes>
-  </test>
-</suite>
