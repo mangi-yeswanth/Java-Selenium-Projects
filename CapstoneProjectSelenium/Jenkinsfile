@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'JDK17'
+        maven 'Maven3'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
+        stage('Build & Run Tests') {
+            steps {
+                sh "mvn clean test"
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                // Publish TestNG Results
+                publishTestNGResults testNGpattern: '**/test-output/testng-results.xml'
+
+                // Publish Cucumber Reports
+                cucumber buildStatus: 'UNSTABLE',
+                         fileIncludePattern: '**/target/cucumber-reports/*.json',
+                         sortingMethod: 'ALPHABETICAL'
+
+                // Publish Extent Report
+                publishHTML(target: [
+                    reportDir: 'test-output/ExtentReports',
+                    reportFiles: 'index.html',
+                    reportName: 'Extent Report'
+                ])
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/target/**/*.html', fingerprint: true
+            junit '**/target/surefire-reports/*.xml'
+        }
+    }
+}
