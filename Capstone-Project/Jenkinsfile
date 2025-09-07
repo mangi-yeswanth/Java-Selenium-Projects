@@ -17,9 +17,7 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                dir('Capstone-Project') {
-                    bat 'mvn clean test'
-                }
+                bat 'cd Capstone-Project && mvn clean test'
             }
         }
 
