@@ -6,13 +6,14 @@ pipeline {
         maven 'Maven3'
     }
 
-    stage('Checkout') {
-    steps {
-        git branch: 'main',
-            url: 'https://github.com/mangi-yeswanth/Java-Selenium-Projects.git',
-            credentialsId: 'github-creds'
-    }
-}
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/mangi-yeswanth/Java-Selenium-Projects.git',
+                    credentialsId: 'github-creds'
+            }
+        }
 
         stage('Build & Run Tests') {
             steps {
