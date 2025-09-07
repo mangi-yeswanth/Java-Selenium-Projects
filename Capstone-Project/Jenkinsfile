@@ -17,23 +17,28 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                bat "mvn clean test"
+                dir('Capstone-Project') { // go inside the folder containing pom.xml
+                    bat 'mvn clean test'
+                }
             }
         }
 
         stage('Publish Reports') {
             steps {
-                // Publish TestNG Results
-                publishTestNGResults testNGpattern: '**/test-output/testng-results.xml'
+                // Publish JUnit results
+                junit 'Capstone-Project/target/surefire-reports/*.xml'
 
-                // Publish Cucumber Reports
+                // Publish TestNG results (if you use TestNG)
+                publishTestNGResults testNGpattern: 'Capstone-Project/test-output/testng-results.xml'
+
+                // Publish Cucumber Reports (if applicable)
                 cucumber buildStatus: 'UNSTABLE',
-                         fileIncludePattern: '**/target/cucumber-reports/*.json',
+                         fileIncludePattern: 'Capstone-Project/target/cucumber-reports/*.json',
                          sortingMethod: 'ALPHABETICAL'
 
                 // Publish Extent Report
                 publishHTML(target: [
-                    reportDir: 'test-output/ExtentReports',
+                    reportDir: 'Capstone-Project/test-output/ExtentReports',
                     reportFiles: 'index.html',
                     reportName: 'Extent Report'
                 ])
@@ -43,8 +48,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: '**/target/**/*.html', fingerprint: true
-            junit '**/target/surefire-reports/*.xml'
+            archiveArtifacts artifacts: 'Capstone-Project/target/**/*.html', fingerprint: true
         }
     }
 }
