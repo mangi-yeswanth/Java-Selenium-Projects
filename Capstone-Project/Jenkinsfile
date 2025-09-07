@@ -17,25 +17,22 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                // Run from correct folder (only once)
-                bat 'cd Capstone-Project && mvn clean test'
+                dir('Capstone-Project') {
+                    bat 'mvn clean test'
+                }
             }
         }
 
         stage('Publish Reports') {
             steps {
-                // Publish JUnit results
                 junit 'Capstone-Project/target/surefire-reports/*.xml'
 
-                // Publish TestNG results
                 publishTestNGResults testNGpattern: 'Capstone-Project/test-output/testng-results.xml'
 
-                // Publish Cucumber Reports
                 cucumber buildStatus: 'UNSTABLE',
                          fileIncludePattern: 'Capstone-Project/target/cucumber-reports/*.json',
                          sortingMethod: 'ALPHABETICAL'
 
-                // Publish Extent Report
                 publishHTML(target: [
                     reportDir: 'Capstone-Project/test-output/ExtentReports',
                     reportFiles: 'index.html',
